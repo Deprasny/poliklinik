@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Dokter;
+use App\Poliklinik;
 
 class DokterController extends Controller
 {
@@ -24,7 +26,8 @@ class DokterController extends Controller
      */
     public function create()
     {
-        return view('dokter.add');
+        $poliklinik = Poliklinik::all();
+        return view('dokter.add', compact('poliklinik'));
     }
 
     /**
@@ -36,7 +39,7 @@ class DokterController extends Controller
     public function store(Request $request)
     {
       $this->validate($request, [
-          'polklinik_id' => 'required',
+          'poliklinik_id' => 'required',
           'nama' => 'required',
           'spesialis' => 'required',
           'alamat' => 'required',
@@ -49,7 +52,7 @@ class DokterController extends Controller
        $tambah->nama = $request['nama'];
        $tambah->spesialis = $request['spesialis'];
        $tambah->alamat = $request['alamat'];
-       $tambah->telepon = $request['akses'];
+       $tambah->telepon = $request['telepon'];
        $tambah->tarif = $request['tarif'];
 
        $tambah->save();

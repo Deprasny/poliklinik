@@ -25,9 +25,10 @@
                       <td>{{ $data->alamat }}</td>
                       <td>{{ $data->akses }}</td>
                       <td>
-                        <a href="{{ route('detail.buku', $data->id) }}">Detail</a>
-                        <a href="{{ route('edit.buku', $data->id) }}"> Edit</a>
-                        <a href="{{ route('delete.buku', $data->id) }}"> Delete</a>
+
+                        <a href="{{ route('edit.user', $data->id) }}"> Edit</a>
+                        <a href="{{ route('delete.user', $data->id) }}"> Hapus</a>
+
                       </td>
                     </tr>
                     @endforeach
